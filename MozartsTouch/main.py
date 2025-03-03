@@ -84,10 +84,6 @@ class Entry:
         '''进行图像识别'''
         self.txt = self.image_recog.img2txt(self.img)
     
-    def test_img2txt(self):
-        '''测试用，跳过图像识别'''
-        self.txt = self.image_recog.test_img2txt(self.img)
-        
     def txt_converter(self):
         '''利用LLM优化已有的图片描述文本'''
         self.converted_txt = self.txt_con.txt_converter(self.txt, self.addtxt) # 追加一个附加输入，具体改动参见txt_converter
@@ -148,11 +144,7 @@ def img_to_music_generate(img: Image, music_duration: int, image_recog: ImageRec
     entry = Entry(image_recog, music_gen, music_duration, addtxt, output_folder, img=img)
 
     # 图片转文字
-    if test_mode:
-        # 测试模式跳过图像识别，使用默认文本
-        entry.test_img2txt()
-    else:
-        entry.img2txt()
+    entry.img2txt()
 
     # 文本优化
     entry.txt_converter()

@@ -1,31 +1,44 @@
-message = '''
-不要直接运行这个程序！运行start_server.py！！！
-Don't run this file directly! Run start_server.py instead!!!
-'''
-if __name__ == "__main__":
-    print(message)
-
-from fastapi import FastAPI, File, UploadFile, Form
+from contextlib import asynccontextmanager
+from fastapi import APIRouter, FastAPI, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 # import uvicorn
 from io import BytesIO
 from PIL import Image
-# from pydantic import BaseModel
+from pydantic import BaseModel
 from pathlib import Path
-app_path = Path(__file__).parent# app_path为项目根目录（`/`）
+
+import uvicorn
 import MozartsTouch
 from loguru import logger
 from typing import Optional
 
+router = APIRouter(prefix="/v1", tags=["v1"])
+models = {}
+app_path = Path(__file__).parent# app_path为项目根目录（`/`）
 
-music_gen = MozartsTouch.import_music_generator()
-image_recog = MozartsTouch.import_ir()
+class MusicResponse(BaseModel):
+    prompt: str
+    converted_prompt: str
+    result_file_url: str
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Load the ML model
+    models["music_generator"] = MozartsTouch.import_music_generator()
+    models["image_recog"] = MozartsTouch.import_ir()
+
+    yield
+
+    # Clean up the ML models and release the resources
+    del models["music_generator"]
+    del models["image_recog"]
 
 # Create FastAPI app
-app = FastAPI(title='点彩成乐', description='“点彩成乐”项目后端')
-# Add CORS middleware
+app = FastAPI(title='点彩成乐', description='“点彩成乐”项目后端', lifespan=lifespan)
+
 origins = ["http://localhost:5173"]
+# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -35,7 +48,7 @@ app.add_middleware(
 )
 
 
-@app.post("/image")
+@router.post("/image", response_model=MusicResponse)
 async def upload_image(file: UploadFile = File(...),
                        music_duration: Optional[int] = Form(10),
                        instruction: Optional[str] = Form("")):
@@ -56,9 +69,9 @@ async def upload_image(file: UploadFile = File(...),
     output_folder = app_path / "outputs"
 
     img = Image.open(file.file)
-    result = MozartsTouch.img_to_music_generate(img, music_duration, image_recog, music_gen, output_folder)
+    result = MozartsTouch.img_to_music_generate(img, music_duration, models["image_recog"], models["music_generator"], output_folder)
 
-    if not music_gen.model_name.startswith("suno"):
+    if not models["music_generator"].model_name.startswith("suno"):
         prefix = 'http://localhost:3001/music/'
         result = (*result[:2], prefix + result[2])
 
@@ -68,7 +81,7 @@ async def upload_image(file: UploadFile = File(...),
 
     return result_dict
 
-@app.post("/video")
+@router.post("/video", response_model=MusicResponse)
 async def upload_video(file: UploadFile = File(...), instruction: Optional[str] = Form('')):
     '''
     上传视频以进行音乐生成
@@ -91,7 +104,7 @@ async def upload_video(file: UploadFile = File(...), instruction: Optional[str] 
     with open(video_path, "wb") as f:
         f.write(contents)
 
-    result = MozartsTouch.video_to_music_generate(str(video_path), image_recog, music_gen, output_folder, instruction)
+    result = MozartsTouch.video_to_music_generate(str(video_path), models["image_recog"], models["music_generator"], output_folder, instruction)
 
     prefix = 'http://localhost:3001/music/'  # 将musicgen生成的音乐文件名包装成URL
     filename_with_prefix = prefix + result[2]
@@ -103,7 +116,7 @@ async def upload_video(file: UploadFile = File(...), instruction: Optional[str] 
 
     return result_dict
 
-@app.get("/music/{result_file_name}")
+@router.get("/music/{result_file_name}")
 async def get_music(result_file_name: str):
     '''
     获取/outputs目录下对应名称的文件
@@ -118,3 +131,8 @@ async def get_music(result_file_name: str):
 @app.get("/")
 async def root():
     return {"message": "Good morning, and in case I don't see you, good afternoon, good evening, and good night! 这是“点彩成乐”后端根域名，在域名后面加上`/docs#/`访问后端API文档页面！"}
+
+app.include_router(router)
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=3001)
