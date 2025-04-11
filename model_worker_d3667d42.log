@@ -1,0 +1,213 @@
+2025-03-23 04:26:04 | INFO | model_worker | args: Namespace(host='localhost', port=21002, worker_address='http://localhost:21002', controller_address='http://localhost:21001', model_path='lmsys/vicuna-7b-v1.5', revision='main', device='cuda', gpus=None, num_gpus=1, max_gpu_memory=None, dtype=None, load_8bit=False, cpu_offloading=False, gptq_ckpt=None, gptq_wbits=16, gptq_groupsize=-1, gptq_act_order=False, awq_ckpt=None, awq_wbits=16, awq_groupsize=-1, enable_exllama=False, exllama_max_seq_len=4096, exllama_gpu_split=None, exllama_cache_8bit=False, enable_xft=False, xft_max_seq_len=4096, xft_dtype=None, model_names=None, conv_template=None, embed_in_truncate=False, limit_worker_concurrency=5, stream_interval=2, no_register=False, seed=None, debug=False, ssl=False)
+2025-03-23 04:26:04 | INFO | model_worker | Loading the model ['vicuna-7b-v1.5'] on worker d3667d42 ...
+2025-03-23 04:26:05 | ERROR | stderr | config.json:   0%|                                                       | 0.00/615 [00:00<?, ?B/s]
+2025-03-23 04:26:05 | ERROR | stderr | config.json: 100%|████████████████████████████████████████████████████████| 615/615 [00:00<?, ?B/s]
+2025-03-23 04:26:05 | ERROR | stderr | 
+2025-03-23 04:26:05 | ERROR | stderr | D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\huggingface_hub\file_download.py:142: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\Mariem Mobarak\.cache\huggingface\hub\models--lmsys--vicuna-7b-v1.5. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+2025-03-23 04:26:05 | ERROR | stderr | To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+2025-03-23 04:26:05 | ERROR | stderr |   warnings.warn(message)
+2025-03-23 04:26:10 | ERROR | stderr | pytorch_model.bin.index.json:   0%|                                    | 0.00/26.8k [00:00<?, ?B/s]
+2025-03-23 04:26:10 | ERROR | stderr | pytorch_model.bin.index.json: 100%|███████████████████████████| 26.8k/26.8k [00:00<00:00, 1.60MB/s]
+2025-03-23 04:26:10 | ERROR | stderr | 
+2025-03-23 04:26:10 | ERROR | stderr | Fetching 2 files:   0%|                                                      | 0/2 [00:00<?, ?it/s]
+2025-03-23 04:26:11 | ERROR | stderr | 
+2025-03-23 04:26:11 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   0%|                                | 0.00/9.98G [00:00<?, ?B/s]
+2025-03-23 04:26:11 | ERROR | stderr | [A
+2025-03-23 04:26:11 | ERROR | stderr | 
+2025-03-23 04:26:11 | ERROR | stderr | 
+2025-03-23 04:26:11 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   0%|                                | 0.00/3.50G [00:00<?, ?B/s]
+2025-03-23 04:26:11 | ERROR | stderr | [A[A
+2025-03-23 04:26:14 | ERROR | stderr | 
+2025-03-23 04:26:14 | ERROR | stderr | 
+2025-03-23 04:26:14 | ERROR | stderr | 
+2025-03-23 04:26:14 | ERROR | stderr | model.safetensors.index.json:   0%|                                    | 0.00/28.1k [00:00<?, ?B/s]
+2025-03-23 04:26:14 | ERROR | stderr | [A[A[A
+2025-03-23 04:26:14 | ERROR | stderr | model.safetensors.index.json: 100%|███████████████████████████| 28.1k/28.1k [00:00<00:00, 2.08MB/s]
+2025-03-23 04:26:14 | ERROR | stderr | 
+2025-03-23 04:26:26 | ERROR | stderr | 
+2025-03-23 04:26:26 | ERROR | stderr | 
+2025-03-23 04:26:26 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   0%|                      | 10.5M/3.50G [00:14<1:22:17, 707kB/s]
+2025-03-23 04:26:26 | ERROR | stderr | [A[A
+2025-03-23 04:26:27 | ERROR | stderr | 
+2025-03-23 04:26:27 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   0%|                      | 10.5M/9.98G [00:15<4:11:19, 661kB/s]
+2025-03-23 04:26:27 | ERROR | stderr | [A
+2025-03-23 04:26:32 | ERROR | stderr | 
+2025-03-23 04:26:32 | ERROR | stderr | 
+2025-03-23 04:26:32 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   1%|▏                      | 21.0M/3.50G [00:20<52:22, 1.11MB/s]
+2025-03-23 04:26:32 | ERROR | stderr | [A[A
+2025-03-23 04:26:33 | ERROR | stderr | 
+2025-03-23 04:26:33 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   0%|                     | 21.0M/9.98G [00:21<2:39:14, 1.04MB/s]
+2025-03-23 04:26:33 | ERROR | stderr | [A
+2025-03-23 04:26:38 | ERROR | stderr | 
+2025-03-23 04:26:38 | ERROR | stderr | 
+2025-03-23 04:26:38 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   1%|▏                      | 31.5M/3.50G [00:26<43:45, 1.32MB/s]
+2025-03-23 04:26:38 | ERROR | stderr | [A[A
+2025-03-23 04:26:40 | ERROR | stderr | 
+2025-03-23 04:26:40 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   0%|                     | 31.5M/9.98G [00:29<2:18:09, 1.20MB/s]
+2025-03-23 04:26:40 | ERROR | stderr | [A
+2025-03-23 04:26:44 | ERROR | stderr | 
+2025-03-23 04:26:44 | ERROR | stderr | 
+2025-03-23 04:26:44 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   1%|▎                      | 41.9M/3.50G [00:32<40:00, 1.44MB/s]
+2025-03-23 04:26:44 | ERROR | stderr | [A[A
+2025-03-23 04:26:48 | ERROR | stderr | 
+2025-03-23 04:26:48 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   0%|                     | 41.9M/9.98G [00:36<2:08:36, 1.29MB/s]
+2025-03-23 04:26:48 | ERROR | stderr | [A
+2025-03-23 04:26:49 | ERROR | stderr | 
+2025-03-23 04:26:49 | ERROR | stderr | 
+2025-03-23 04:26:49 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   1%|▎                      | 52.4M/3.50G [00:37<34:53, 1.65MB/s]
+2025-03-23 04:26:49 | ERROR | stderr | [A[A
+2025-03-23 04:26:55 | ERROR | stderr | 
+2025-03-23 04:26:55 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   1%|                     | 52.4M/9.98G [00:43<2:02:09, 1.35MB/s]
+2025-03-23 04:26:55 | ERROR | stderr | [A
+2025-03-23 04:26:56 | ERROR | stderr | 
+2025-03-23 04:26:56 | ERROR | stderr | 
+2025-03-23 04:26:56 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   2%|▍                      | 62.9M/3.50G [00:45<36:37, 1.56MB/s]
+2025-03-23 04:26:56 | ERROR | stderr | [A[A
+2025-03-23 04:27:00 | ERROR | stderr | 
+2025-03-23 04:27:00 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   1%|▏                    | 62.9M/9.98G [00:49<1:51:17, 1.48MB/s]
+2025-03-23 04:27:00 | ERROR | stderr | [A
+2025-03-23 04:27:03 | ERROR | stderr | 
+2025-03-23 04:27:03 | ERROR | stderr | 
+2025-03-23 04:27:03 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   2%|▍                      | 73.4M/3.50G [00:51<35:42, 1.60MB/s]
+2025-03-23 04:27:03 | ERROR | stderr | [A[A
+2025-03-23 04:27:06 | ERROR | stderr | 
+2025-03-23 04:27:06 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   1%|▏                    | 73.4M/9.98G [00:54<1:44:38, 1.58MB/s]
+2025-03-23 04:27:06 | ERROR | stderr | [A
+2025-03-23 04:27:09 | ERROR | stderr | 
+2025-03-23 04:27:09 | ERROR | stderr | 
+2025-03-23 04:27:09 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   2%|▌                      | 83.9M/3.50G [00:57<35:01, 1.63MB/s]
+2025-03-23 04:27:09 | ERROR | stderr | [A[A
+2025-03-23 04:27:12 | ERROR | stderr | 
+2025-03-23 04:27:12 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   1%|▏                    | 83.9M/9.98G [01:00<1:39:28, 1.66MB/s]
+2025-03-23 04:27:12 | ERROR | stderr | [A
+2025-03-23 04:27:15 | ERROR | stderr | 
+2025-03-23 04:27:15 | ERROR | stderr | 
+2025-03-23 04:27:15 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   3%|▌                      | 94.4M/3.50G [01:03<34:26, 1.65MB/s]
+2025-03-23 04:27:15 | ERROR | stderr | [A[A
+2025-03-23 04:27:18 | ERROR | stderr | 
+2025-03-23 04:27:18 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   1%|▏                    | 94.4M/9.98G [01:06<1:36:59, 1.70MB/s]
+2025-03-23 04:27:18 | ERROR | stderr | [A
+2025-03-23 04:27:21 | ERROR | stderr | 
+2025-03-23 04:27:21 | ERROR | stderr | 
+2025-03-23 04:27:21 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   3%|▋                       | 105M/3.50G [01:09<34:10, 1.66MB/s]
+2025-03-23 04:27:21 | ERROR | stderr | [A[A
+2025-03-23 04:27:24 | ERROR | stderr | 
+2025-03-23 04:27:24 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   1%|▏                     | 105M/9.98G [01:12<1:38:41, 1.67MB/s]
+2025-03-23 04:27:24 | ERROR | stderr | [A
+2025-03-23 04:27:27 | ERROR | stderr | 
+2025-03-23 04:27:27 | ERROR | stderr | 
+2025-03-23 04:27:27 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   3%|▊                       | 115M/3.50G [01:15<32:14, 1.75MB/s]
+2025-03-23 04:27:27 | ERROR | stderr | [A[A
+2025-03-23 04:27:31 | ERROR | stderr | 
+2025-03-23 04:27:31 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   1%|▎                     | 115M/9.98G [01:19<1:39:22, 1.65MB/s]
+2025-03-23 04:27:31 | ERROR | stderr | [A
+2025-03-23 04:27:32 | ERROR | stderr | 
+2025-03-23 04:27:32 | ERROR | stderr | 
+2025-03-23 04:27:32 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   4%|▊                       | 126M/3.50G [01:20<31:47, 1.77MB/s]
+2025-03-23 04:27:32 | ERROR | stderr | [A[A
+2025-03-23 04:27:37 | ERROR | stderr | 
+2025-03-23 04:27:37 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   1%|▎                     | 126M/9.98G [01:25<1:40:31, 1.63MB/s]
+2025-03-23 04:27:37 | ERROR | stderr | [A
+2025-03-23 04:27:38 | ERROR | stderr | 
+2025-03-23 04:27:38 | ERROR | stderr | 
+2025-03-23 04:27:38 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   4%|▉                       | 136M/3.50G [01:26<31:15, 1.79MB/s]
+2025-03-23 04:27:38 | ERROR | stderr | [A[A
+2025-03-23 04:27:43 | ERROR | stderr | 
+2025-03-23 04:27:43 | ERROR | stderr | 
+2025-03-23 04:27:43 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   4%|█                       | 147M/3.50G [01:31<29:23, 1.90MB/s]
+2025-03-23 04:27:43 | ERROR | stderr | [A[A
+2025-03-23 04:27:45 | ERROR | stderr | 
+2025-03-23 04:27:45 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   1%|▎                     | 136M/9.98G [01:33<1:47:58, 1.52MB/s]
+2025-03-23 04:27:45 | ERROR | stderr | [A
+2025-03-23 04:27:47 | ERROR | stderr | 
+2025-03-23 04:27:47 | ERROR | stderr | 
+2025-03-23 04:27:47 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   4%|█                       | 157M/3.50G [01:36<28:05, 1.98MB/s]
+2025-03-23 04:27:47 | ERROR | stderr | [A[A
+2025-03-23 04:27:52 | ERROR | stderr | 
+2025-03-23 04:27:52 | ERROR | stderr | 
+2025-03-23 04:27:52 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   5%|█▏                      | 168M/3.50G [01:40<26:40, 2.08MB/s]
+2025-03-23 04:27:52 | ERROR | stderr | [A[A
+2025-03-23 04:27:53 | ERROR | stderr | 
+2025-03-23 04:27:53 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   1%|▎                     | 147M/9.98G [01:42<1:53:52, 1.44MB/s]
+2025-03-23 04:27:53 | ERROR | stderr | [A
+2025-03-23 04:27:57 | ERROR | stderr | 
+2025-03-23 04:27:57 | ERROR | stderr | 
+2025-03-23 04:27:57 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   5%|█▏                      | 178M/3.50G [01:45<25:59, 2.13MB/s]
+2025-03-23 04:27:57 | ERROR | stderr | [A[A
+2025-03-23 04:28:01 | ERROR | stderr | 
+2025-03-23 04:28:01 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   2%|▎                     | 157M/9.98G [01:49<1:55:38, 1.42MB/s]
+2025-03-23 04:28:01 | ERROR | stderr | [A
+2025-03-23 04:28:02 | ERROR | stderr | 
+2025-03-23 04:28:02 | ERROR | stderr | 
+2025-03-23 04:28:02 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   5%|█▎                      | 189M/3.50G [01:50<26:47, 2.06MB/s]
+2025-03-23 04:28:02 | ERROR | stderr | [A[A
+2025-03-23 04:28:07 | ERROR | stderr | 
+2025-03-23 04:28:07 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   2%|▎                     | 168M/9.98G [01:55<1:47:41, 1.52MB/s]
+2025-03-23 04:28:07 | ERROR | stderr | [A
+2025-03-23 04:28:08 | ERROR | stderr | 
+2025-03-23 04:28:08 | ERROR | stderr | 
+2025-03-23 04:28:08 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   6%|█▎                      | 199M/3.50G [01:56<28:07, 1.96MB/s]
+2025-03-23 04:28:08 | ERROR | stderr | [A[A
+2025-03-23 04:28:13 | ERROR | stderr | 
+2025-03-23 04:28:13 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   2%|▍                     | 178M/9.98G [02:02<1:45:29, 1.55MB/s]
+2025-03-23 04:28:13 | ERROR | stderr | [A
+2025-03-23 04:28:13 | ERROR | stderr | 
+2025-03-23 04:28:13 | ERROR | stderr | 
+2025-03-23 04:28:13 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   6%|█▍                      | 210M/3.50G [02:02<28:06, 1.95MB/s]
+2025-03-23 04:28:13 | ERROR | stderr | [A[A
+2025-03-23 04:28:19 | ERROR | stderr | 
+2025-03-23 04:28:19 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   2%|▍                     | 189M/9.98G [02:07<1:40:14, 1.63MB/s]
+2025-03-23 04:28:19 | ERROR | stderr | [A
+2025-03-23 04:28:20 | ERROR | stderr | 
+2025-03-23 04:28:20 | ERROR | stderr | 
+2025-03-23 04:28:20 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   6%|█▌                      | 220M/3.50G [02:08<29:27, 1.86MB/s]
+2025-03-23 04:28:20 | ERROR | stderr | [A[A
+2025-03-23 04:28:24 | ERROR | stderr | 
+2025-03-23 04:28:24 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   2%|▍                     | 199M/9.98G [02:13<1:35:26, 1.71MB/s]
+2025-03-23 04:28:24 | ERROR | stderr | [A
+2025-03-23 04:28:26 | ERROR | stderr | 
+2025-03-23 04:28:26 | ERROR | stderr | 
+2025-03-23 04:28:26 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   7%|█▌                      | 231M/3.50G [02:14<30:36, 1.78MB/s]
+2025-03-23 04:28:26 | ERROR | stderr | [A[A
+2025-03-23 04:28:30 | ERROR | stderr | 
+2025-03-23 04:28:30 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   2%|▍                     | 210M/9.98G [02:19<1:34:46, 1.72MB/s]
+2025-03-23 04:28:30 | ERROR | stderr | [A
+2025-03-23 04:28:32 | ERROR | stderr | 
+2025-03-23 04:28:32 | ERROR | stderr | 
+2025-03-23 04:28:32 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   7%|█▋                      | 241M/3.50G [02:20<30:20, 1.79MB/s]
+2025-03-23 04:28:32 | ERROR | stderr | [A[A
+2025-03-23 04:28:38 | ERROR | stderr | 
+2025-03-23 04:28:38 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   2%|▍                     | 220M/9.98G [02:27<1:43:38, 1.57MB/s]
+2025-03-23 04:28:38 | ERROR | stderr | [A
+2025-03-23 04:28:39 | ERROR | stderr | 
+2025-03-23 04:28:39 | ERROR | stderr | 
+2025-03-23 04:28:39 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   7%|█▋                      | 252M/3.50G [02:27<31:18, 1.73MB/s]
+2025-03-23 04:28:39 | ERROR | stderr | [A[A
+2025-03-23 04:28:44 | ERROR | stderr | 
+2025-03-23 04:28:44 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   2%|▌                     | 231M/9.98G [02:33<1:39:45, 1.63MB/s]
+2025-03-23 04:28:44 | ERROR | stderr | [A
+2025-03-23 04:28:45 | ERROR | stderr | 
+2025-03-23 04:28:45 | ERROR | stderr | 
+2025-03-23 04:28:45 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   7%|█▊                      | 262M/3.50G [02:33<31:37, 1.71MB/s]
+2025-03-23 04:28:45 | ERROR | stderr | [A[A
+2025-03-23 04:28:50 | ERROR | stderr | 
+2025-03-23 04:28:50 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   2%|▌                     | 241M/9.98G [02:38<1:37:11, 1.67MB/s]
+2025-03-23 04:28:50 | ERROR | stderr | [A
+2025-03-23 04:28:51 | ERROR | stderr | 
+2025-03-23 04:28:51 | ERROR | stderr | 
+2025-03-23 04:28:51 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   8%|█▊                      | 273M/3.50G [02:39<30:59, 1.74MB/s]
+2025-03-23 04:28:51 | ERROR | stderr | [A[A
+2025-03-23 04:28:56 | ERROR | stderr | 
+2025-03-23 04:28:56 | ERROR | stderr | 
+2025-03-23 04:28:56 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   8%|█▉                      | 283M/3.50G [02:44<30:15, 1.77MB/s]
+2025-03-23 04:28:56 | ERROR | stderr | [A[A
+2025-03-23 04:28:57 | ERROR | stderr | 
+2025-03-23 04:28:57 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   3%|▌                     | 252M/9.98G [02:45<1:37:44, 1.66MB/s]
+2025-03-23 04:28:57 | ERROR | stderr | [A
+2025-03-23 04:29:03 | ERROR | stderr | 
+2025-03-23 04:29:03 | ERROR | stderr | pytorch_model-00001-of-00002.bin:   3%|▌                     | 262M/9.98G [02:51<1:37:40, 1.66MB/s]
+2025-03-23 04:29:03 | ERROR | stderr | [A
+2025-03-23 04:29:03 | ERROR | stderr | 
+2025-03-23 04:29:03 | ERROR | stderr | 
+2025-03-23 04:29:03 | ERROR | stderr | pytorch_model-00002-of-00002.bin:   8%|██                      | 294M/3.50G [02:51<31:27, 1.70MB/s]
+2025-03-23 04:29:03 | ERROR | stderr | [A[A

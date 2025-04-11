@@ -12,7 +12,10 @@ module_path = Path(__file__).resolve().parent.parent.parent
 class MusicGen:
     def __init__(self, model_name="musicgen_small") -> None:
         self.processor = AutoProcessor.from_pretrained(module_path / "model" / f"{model_name}_processor")
-        self.model = MusicgenForConditionalGeneration.from_pretrained(module_path / "model" / f"{model_name}_model").to(device)
+        self.model = MusicgenForConditionalGeneration.from_pretrained(
+            module_path / "model" / f"{model_name}_model",
+            attn_implementation="eager"
+        ).to(device)
         self.sampling_rate = self.model.config.audio_encoder.sampling_rate
 
     def generate(self, text: str, music_duration: int) -> BytesIO:
@@ -24,7 +27,14 @@ class MusicGen:
             padding=True,
             return_tensors="pt",
         ).to(device)
-        audio_values = self.model.generate(**inputs, max_new_tokens=int(256 * music_duration // 5)) # music_duration为秒数，256token = 5s 
+        audio_values = self.model.generate(
+    **inputs,
+    max_new_tokens=int(256 * music_duration // 5), # music_duration为秒数，256token = 5s 
+    do_sample=True,
+    temperature=1.0,
+    top_k=250,
+    top_p=0.95
+)  
 
         wav_file_data = BytesIO()
         scipy.io.wavfile.write(wav_file_data, rate=self.sampling_rate, data=audio_values[0, 0].cpu().numpy())
@@ -33,6 +43,6 @@ class MusicGen:
 
 if __name__ == "__main__":
     music_gen_small = MusicGen()
-    output = music_gen_small.generate("cyberpunk electronic dancing music", 1)
+    output = music_gen_small.generate("use the piano and guitar to play a romantic song using major D key", 1)
     with open(module_path / 'music_gen_test.wav', 'wb') as f:
         f.write(output.getvalue())

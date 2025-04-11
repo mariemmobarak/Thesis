@@ -1,0 +1,64 @@
+2025-03-23 04:25:25 | INFO | model_worker | args: Namespace(host='localhost', port=21002, worker_address='http://localhost:21002', controller_address='http://localhost:21001', model_path='lmsys/vicuna-7b-v1.5', revision='main', device='cuda', gpus=None, num_gpus=1, max_gpu_memory=None, dtype=None, load_8bit=False, cpu_offloading=False, gptq_ckpt=None, gptq_wbits=16, gptq_groupsize=-1, gptq_act_order=False, awq_ckpt=None, awq_wbits=16, awq_groupsize=-1, enable_exllama=False, exllama_max_seq_len=4096, exllama_gpu_split=None, exllama_cache_8bit=False, enable_xft=False, xft_max_seq_len=4096, xft_dtype=None, model_names=None, conv_template=None, embed_in_truncate=False, limit_worker_concurrency=5, stream_interval=2, no_register=False, seed=None, debug=False, ssl=False)
+2025-03-23 04:25:25 | INFO | model_worker | Loading the model ['vicuna-7b-v1.5'] on worker acb5de12 ...
+2025-03-23 04:25:26 | ERROR | stderr | tokenizer.model:   0%|                                                  | 0.00/500k [00:00<?, ?B/s]
+2025-03-23 04:25:26 | ERROR | stderr | tokenizer.model: 100%|██████████████████████████████████████████| 500k/500k [00:00<00:00, 1.61MB/s]
+2025-03-23 04:25:26 | ERROR | stderr | tokenizer.model: 100%|██████████████████████████████████████████| 500k/500k [00:00<00:00, 1.61MB/s]
+2025-03-23 04:25:26 | ERROR | stderr | 
+2025-03-23 04:25:26 | ERROR | stderr | D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\huggingface_hub\file_download.py:142: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\Mariem Mobarak\.cache\huggingface\hub\models--lmsys--vicuna-7b-v1.5. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+2025-03-23 04:25:26 | ERROR | stderr | To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+2025-03-23 04:25:26 | ERROR | stderr |   warnings.warn(message)
+2025-03-23 04:25:27 | ERROR | stderr | special_tokens_map.json:   0%|                                           | 0.00/438 [00:00<?, ?B/s]
+2025-03-23 04:25:27 | ERROR | stderr | special_tokens_map.json: 100%|█████████████████████████████████████| 438/438 [00:00<00:00, 438kB/s]
+2025-03-23 04:25:27 | ERROR | stderr | 
+2025-03-23 04:25:27 | ERROR | stderr | Traceback (most recent call last):
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\transformers\tokenization_utils_base.py", line 2302, in _from_pretrained
+2025-03-23 04:25:27 | ERROR | stderr |     tokenizer = cls(*init_inputs, **init_kwargs)
+2025-03-23 04:25:27 | ERROR | stderr |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\transformers\models\llama\tokenization_llama.py", line 169, in __init__
+2025-03-23 04:25:27 | ERROR | stderr |     self.sp_model = self.get_spm_processor(kwargs.pop("from_slow", False))
+2025-03-23 04:25:27 | ERROR | stderr |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\transformers\models\llama\tokenization_llama.py", line 201, in get_spm_processor
+2025-03-23 04:25:27 | ERROR | stderr |     model_pb2 = import_protobuf(f"The new behaviour of {self.__class__.__name__} (with `self.legacy = False`)")
+2025-03-23 04:25:27 | ERROR | stderr |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\transformers\convert_slow_tokenizer.py", line 36, in import_protobuf
+2025-03-23 04:25:27 | ERROR | stderr |     from sentencepiece import sentencepiece_model_pb2
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\sentencepiece\sentencepiece_model_pb2.py", line 5, in <module>
+2025-03-23 04:25:27 | ERROR | stderr |     from google.protobuf.internal import builder as _builder
+2025-03-23 04:25:27 | ERROR | stderr | ModuleNotFoundError: No module named 'google'
+2025-03-23 04:25:27 | ERROR | stderr | 
+2025-03-23 04:25:27 | ERROR | stderr | During handling of the above exception, another exception occurred:
+2025-03-23 04:25:27 | ERROR | stderr | 
+2025-03-23 04:25:27 | ERROR | stderr | Traceback (most recent call last):
+2025-03-23 04:25:27 | ERROR | stderr |   File "<frozen runpy>", line 198, in _run_module_as_main
+2025-03-23 04:25:27 | ERROR | stderr |   File "<frozen runpy>", line 88, in _run_code
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\fastchat\serve\model_worker.py", line 414, in <module>
+2025-03-23 04:25:27 | ERROR | stderr |     args, worker = create_model_worker()
+2025-03-23 04:25:27 | ERROR | stderr |                    ^^^^^^^^^^^^^^^^^^^^^
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\fastchat\serve\model_worker.py", line 385, in create_model_worker
+2025-03-23 04:25:27 | ERROR | stderr |     worker = ModelWorker(
+2025-03-23 04:25:27 | ERROR | stderr |              ^^^^^^^^^^^^
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\fastchat\serve\model_worker.py", line 77, in __init__
+2025-03-23 04:25:27 | ERROR | stderr |     self.model, self.tokenizer = load_model(
+2025-03-23 04:25:27 | ERROR | stderr |                                  ^^^^^^^^^^^
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\fastchat\model\model_adapter.py", line 353, in load_model
+2025-03-23 04:25:27 | ERROR | stderr |     model, tokenizer = adapter.load_model(model_path, kwargs)
+2025-03-23 04:25:27 | ERROR | stderr |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\fastchat\model\model_adapter.py", line 686, in load_model
+2025-03-23 04:25:27 | ERROR | stderr |     tokenizer = AutoTokenizer.from_pretrained(
+2025-03-23 04:25:27 | ERROR | stderr |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\transformers\models\auto\tokenization_auto.py", line 973, in from_pretrained
+2025-03-23 04:25:27 | ERROR | stderr |     return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+2025-03-23 04:25:27 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\transformers\tokenization_utils_base.py", line 2062, in from_pretrained
+2025-03-23 04:25:27 | ERROR | stderr |     return cls._from_pretrained(
+2025-03-23 04:25:27 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\transformers\tokenization_utils_base.py", line 2303, in _from_pretrained
+2025-03-23 04:25:27 | ERROR | stderr |     except import_protobuf_decode_error():
+2025-03-23 04:25:27 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-03-23 04:25:27 | ERROR | stderr |   File "D:\UNI\Semester 8\Motzart\MozartsTouch\.venv\Lib\site-packages\transformers\tokenization_utils_base.py", line 87, in import_protobuf_decode_error
+2025-03-23 04:25:27 | ERROR | stderr |     raise ImportError(PROTOBUF_IMPORT_ERROR.format(error_message))
+2025-03-23 04:25:27 | ERROR | stderr | ImportError:
+2025-03-23 04:25:27 | ERROR | stderr |  requires the protobuf library but it was not found in your environment. Checkout the instructions on the
+2025-03-23 04:25:27 | ERROR | stderr | installation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation and follow the ones
+2025-03-23 04:25:27 | ERROR | stderr | that match your environment. Please note that you may need to restart your runtime after installation.
+2025-03-23 04:25:27 | ERROR | stderr | 

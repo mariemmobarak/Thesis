@@ -3,7 +3,7 @@ import os
 os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'
 
 from pathlib import Path
-from transformers import AutoProcessor, MusicgenForConditionalGeneration, BlipForConditionalGeneration, AutoModelForCausalLM
+from transformers import AutoProcessor, MusicgenForConditionalGeneration, BlipForConditionalGeneration, AutoModelForCausalLM, AutoModel
 from loguru import logger
 
 # 设置环境变量和路径
@@ -39,7 +39,5 @@ def download_and_save_model(model_class, processor_class, model_name, save_dir):
         processor.save_pretrained(processor_save_path)
 
 # 下载模型
-# download_and_save_model(MusicgenForConditionalGeneration, AutoProcessor, "facebook/musicgen-small", model_path)
-# download_and_save_model(BlipForConditionalGeneration, AutoProcessor, "Salesforce/blip-image-captioning-base", model_path)
-# download_and_save_model(MusicgenForConditionalGeneration, AutoProcessor, "facebook/musicgen-medium", model_path)
-download_and_save_model(AutoModelForCausalLM, AutoProcessor, "microsoft/Florence-2-large", model_path)
+download_and_save_model(MusicgenForConditionalGeneration, AutoProcessor, "facebook/musicgen-medium", model_path)
+download_and_save_model(BlipForConditionalGeneration, AutoProcessor, "Salesforce/blip-image-captioning-base", model_path)

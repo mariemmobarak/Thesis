@@ -3,13 +3,13 @@ import time
 from pathlib import Path
 from PIL import Image
 import torch
-from transformers import AutoModelForCausalLM, AutoProcessor
+from transformers import BlipForConditionalGeneration, AutoProcessor
 from loguru import logger
 
 module_path = Path(__file__).resolve().parent.parent
 
 class ImageRecognization:
-    def __init__(self, beam_amount=7, min_prompt_length=15, max_prompt_length=30, test_mode=False):
+    def __init__(self, beam_amount=7, min_prompt_length=15, max_prompt_length=50, test_mode=False):
         self.processor = None
         self.model = None
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -20,14 +20,14 @@ class ImageRecognization:
         self.test_mode = test_mode
         logger.info(f"self.device: {self.device}")
         if not self.test_mode:
-            self._load_model("Florence-2-large")  # Call the _load_model method
+            self._load_model("blip-image-captioning-base")
 
-    def _load_model(self, model_name="Florence-2-large"):
+    def _load_model(self, model_name="blip-image-captioning-base"):
         if not self.model or not self.processor:
             logger.info(f"Loading captioning model {model_name}")
             start_time = time.time()
             self.processor = AutoProcessor.from_pretrained(module_path / "model" / f"{model_name}_processor", trust_remote_code=True)
-            self.model = AutoModelForCausalLM.from_pretrained(
+            self.model = BlipForConditionalGeneration.from_pretrained(
                 module_path / "model" / f"{model_name}_model", torch_dtype=self.torch_dtype, trust_remote_code=True
             ).to(self.device)
             logger.info(f"[TIME] taken for loading {model_name}: {time.time() - start_time :.2f}s")
@@ -41,19 +41,25 @@ class ImageRecognization:
     def _img2txt(self, image: Image, task='<MORE_DETAILED_CAPTION>') -> str:
         start_time = time.time()
         image = image.convert('RGB')
-        inputs = self.processor(text=task, images=image, return_tensors="pt").to(self.device, self.torch_dtype)
-        generated_ids = self.model.generate(
-            input_ids=inputs["input_ids"],
-            pixel_values=inputs["pixel_values"],
-            max_new_tokens=1024,
+        
+        # Process the image
+        inputs = self.processor(images=image, return_tensors="pt").to(self.device, self.torch_dtype)
+        
+        # Generate caption
+        outputs = self.model.generate(
+            **inputs,
+            max_new_tokens=50,
             num_beams=self.beam_amount,
-            do_sample=False
+            min_length=self.min_length,
+            max_length=self.max_length
         )
-        generated_text = self.processor.batch_decode(generated_ids, skip_special_tokens=False)[0]
-        parsed_answer = self.processor.post_process_generation(generated_text, task=task, image_size=(image.width, image.height))
+        
+        # Decode the caption
+        caption = self.processor.decode(outputs[0], skip_special_tokens=True)
+        
         logger.info(f"[TIME] taken for img2txt: {time.time() - start_time :.2f}s")
-        logger.info(parsed_answer)
-        return parsed_answer[task]
+        logger.info(f"Generated caption: {caption}")
+        return caption
 
     def _test_img2txt(self) -> str:
         '''测试用函数，只会直接返回一种结果'''

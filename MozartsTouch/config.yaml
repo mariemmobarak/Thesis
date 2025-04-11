@@ -4,9 +4,9 @@ TEST_MODE: False
 # Change this to disable LLM for ablation study purpose
 USE_LLM: True
 
-DEFAULT_CAPTION_MODEL: Florence-2-large
+DEFAULT_CAPTION_MODEL: blip-image-captioning-base
 
-DEFAULT_LLM_MODEL: qwen2.5-instruct-32b-int4
+DEFAULT_LLM_MODEL: facebook/opt-125m
 
 # Options：['test', 'musicgen-small', 'musicgen-medium', 'musicgen-large', 'suno']
 DEFAULT_MUSIC_MODEL: musicgen-small
@@ -19,12 +19,14 @@ LLM_MODEL_CONFIG:
   # Platform type
   # Options：['xinference', 'ollama', 'oneapi', 'fastchat', 'openai', 'custom openai']
   # This option is not implemented yet ¯\_(シ)_/¯
-  PLATFORM_TYPE: openai
+  PLATFORM_TYPE: local
 
   # OpenAI API URL
-  API_BASE_URL: http://10.29.118.247:9997/v1
+  #API_BASE_URL: http://10.29.118.247:9997/v1
+  API_BASE_URL: local
 
   # api key if available
+  # Replace EMPTY with your OpenAI API key from https://platform.openai.com/account/api-keys
   API_KEY: EMPTY
 
   API_PROXY: ''
